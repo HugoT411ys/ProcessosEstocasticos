@@ -8,9 +8,5 @@ Trabalho realizado durante a disciplina de Processos Estocáticos pelos alunos H
 Os códigos e arquivos das simulações para cada problema foram organizados da seguinte maniera:
 
 * Markov
-  * problema1
-    * sim1.py
-    * sim1_out.txt
-  * problema2
-    * sim2.py
-    * sim2_out.txt
+  * Problema 1
+  * Problema 2
