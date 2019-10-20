@@ -14,7 +14,7 @@ class MarkovChain:
     def step_forward(self, curr_state):
         return numpy.random.choice(self.states, p=[self.prob[curr_state][next_state] for next_state in self.states])
 
-    def frequencies(self):
+    def distribution(self):
         if self.num_iter is not None:
             return [(s, float(self.freq[s] / self.num_iter)) for s in self.freq]
         return 'You must first simulate the chain. Use <markov>.run()'
@@ -35,7 +35,7 @@ def output_results(s, m):
     print('----------------------------------------------------------------------------------------------------')
     print('Initial state: ' + s)
     print('Limit Distribution: ')
-    print(m.frequencies())
+    print(m.distribution())
     print('----------------------------------------------------------------------------------------------------')
 
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     print('Number of Iterations: ' + str(N))
     print('====================================================================================================')
 
-    for state in markov.freq:
+    for state in markov.states:
         markov.run(init_state=state, num_iter=N)
         output_results(state, markov)
         markov.reset()
