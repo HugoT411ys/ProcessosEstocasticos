@@ -9,8 +9,8 @@ Os códigos e arquivos das simulações para cada problema foram organizados da 
 
 * Markov
   * problema1
-   * sim1.py
-   * sim1_out.txt
+    * sim1.py
+    * sim1_out.txt
   * problema2
-   * sim2.py
-   * sim2_out.txt
+    * sim2.py
+    * sim2_out.txt
