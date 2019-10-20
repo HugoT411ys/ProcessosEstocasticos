@@ -1,6 +1,6 @@
 import sys
 import time
-from markov import MarkovChain
+from Markov.markov import MarkovChain
 
 N = 1000000
 
@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     markov = MarkovChain(trans_prob=P)
 
-    f = open('markov1.txt', 'w')
+    f = open('sim1_out.txt', 'w')
     sys.stdout = f
 
     print('====================================================================================================')
