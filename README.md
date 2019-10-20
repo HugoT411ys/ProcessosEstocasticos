@@ -5,4 +5,7 @@ Trabalho realizado durante a disciplina de Processos Estocáticos pelos alunos H
 
 [Cálculos Solução PDF](https://github.com/HugoT411ys/ProcessosEstocasticos/blob/master/trabalho_sim.pdf)
 
-juntamente com o código fonte das simulações para cada problema organizados da seguinte maniera:
+Os códigos fonte das simulações para cada problema foram organizados da seguinte maniera:
+
+* Markov
+  * Questões 1 e 2
