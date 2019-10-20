@@ -1,36 +1,59 @@
 import sys
 import numpy
 
+N = 10000
 
-def markov_simulate(init_state, stochastic_matrix, num_it):
-    init_dist = numpy.zeros((1, 5))
-    init_dist[0][init_state] = 1.
 
-    next_dist = numpy.zeros_like(init_dist)
+class MarkovChain:
+    def __init__(self, trans_prob):
+        self.prob = trans_prob
+        self.states = list(trans_prob.keys())
+        self.freq = {s: 0 for s in self.states}
 
-    for it in range(num_it):
-        next_dist = init_dist.dot(stochastic_matrix)
-        init_dist = next_dist
+    def step_forward(self, curr_state):
+        return numpy.random.choice(self.states, p=[self.prob[curr_state][next_state] for next_state in self.states])
 
+    def frequencies(self):
+        return [(s, float(self.freq[s] / 1000)) for s in self.freq]
+
+    def run(self, init_state, num_iter):
+        for _ in range(num_iter):
+            next_state = self.step_forward(curr_state=init_state)
+            self.freq[next_state] = self.freq[next_state] + 1
+            init_state = next_state
+
+    def reset(self):
+        self.freq = {s: 0 for s in self.states}
+
+
+def output_results(s, m):
     print('----------------------------------------------------------------------------------------------------')
-    print('Initial state: ' + str((init_state+1)) + ' | Number of iterations: ' + str(num_it))
+    print('Initial state: ' + s)
     print('Limit Distribution: ')
-    print(next_dist)
+    print(m.frequencies())
     print('----------------------------------------------------------------------------------------------------')
 
 
 if __name__ == '__main__':
-    P = numpy.array([
-        [1./3, 0., 2./3, 0., 0.],
-        [1./4, 1./2, 1./4, 0., 0.],
-        [1./2, 0., 1./2, 0., 0.],
-        [0., 0., 0., 0., 1.],
-        [0., 0., 0.,  2./3,  1./3]
-    ])
+    P = {'1': {'1': 1./3, '2': 0., '3': 2./3, '4': 0., '5': 0.},
+         '2': {'1': 1./4, '2': 1./2, '3': 1./4, '4': 0., '5': 0.},
+         '3': {'1': 1./2, '2': 0., '3': 1./2, '4': 0., '5': 0.},
+         '4': {'1': 0., '2': 0., '3': 0., '4': 0., '5': 1.},
+         '5': {'1': 0., '2': 0., '3': 0., '4': 2./3, '5': 1./3}}
+
+    markov = MarkovChain(trans_prob=P)
 
     f = open('markov1.txt', 'w')
-
     sys.stdout = f
 
-    for i in range(5):
-        markov_simulate(init_state=i, stochastic_matrix=P, num_it=1000000)
+    print('====================================================================================================')
+    print('Simulating Discrete-Time Markov Chain')
+    print('State Space: ')
+    print(markov.states)
+    print('Number of Iterations: ' + str(N))
+    print('====================================================================================================')
+
+    for state in markov.freq:
+        markov.run(init_state=state, num_iter=N)
+        output_results(state, markov)
+        markov.reset()
