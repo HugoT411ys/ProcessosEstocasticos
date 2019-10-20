@@ -1,7 +1,7 @@
 import sys
 import numpy
 
-N = 10000
+N = 1000000
 
 
 class MarkovChain:
