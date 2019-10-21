@@ -19,15 +19,15 @@ if __name__ == '__main__':
     sys.stdout = f
 
     print('====================================================================================================')
-    print('Simulating Discrete-Time Markov Chain')
-    print('State Space: ')
+    print('Simulando Cadeia de Markov em tempo discreto')
+    print('Espaço de estados: ')
     print(markov.states)
-    print('Number of Iterations: ' + str(N))
+    print('Número de iterações: ' + str(N))
     print('====================================================================================================')
 
     sigma = markov.run(init_state='1', num_iter=N)
-    print('Limit Approximation: ' + str(sigma))
+    print('Aproximação para o limite: ' + str(sigma))
 
     print('====================================================================================================')
-    print("Total execution time: %s seconds." % (time.time() - start_time))
+    print("Tempo de execução: %s segundos" % (time.time() - start_time))
     print('====================================================================================================')

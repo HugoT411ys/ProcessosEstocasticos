@@ -7,8 +7,8 @@ N = 1000000
 
 def output_results(s, m):
     print('----------------------------------------------------------------------------------------------------')
-    print('Initial state: ' + s)
-    print('Limit Distribution: ')
+    print('Estado inicial: ' + s)
+    print('Distribuição Limite: ')
     print(m.distribution())
     print('----------------------------------------------------------------------------------------------------')
 
@@ -28,10 +28,10 @@ if __name__ == '__main__':
     sys.stdout = f
 
     print('====================================================================================================')
-    print('Simulating Discrete-Time Markov Chain')
-    print('State Space: ')
+    print('Simulando Cadeia de Markov em tempo discreto')
+    print('Espaço de estados: ')
     print(markov.states)
-    print('Number of Iterations: ' + str(N))
+    print('Número de iterações: ' + str(N))
     print('====================================================================================================')
 
     for state in markov.states:
@@ -40,5 +40,5 @@ if __name__ == '__main__':
         markov.reset()
 
     print('====================================================================================================')
-    print("Total execution time: %s seconds." % (time.time() - start_time))
+    print("Tempo de execução: %s segundos." % (time.time() - start_time))
     print('====================================================================================================')
