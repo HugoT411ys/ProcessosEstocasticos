@@ -1,6 +1,6 @@
 import sys
 import time
-from Markov.markov import MarkovChain
+from markov import MarkovChain
 
 N = 1000000
 
