@@ -1,6 +1,6 @@
 import sys
 import time
-from markov import MarkovChain
+from stochastic import MarkovChain
 
 N = 1000000
 
