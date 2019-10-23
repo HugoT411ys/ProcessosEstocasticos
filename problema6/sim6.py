@@ -3,7 +3,7 @@ from matplotlib import pyplot
 
 
 if __name__ == '__main__':
-    rows, columns = 10, 100
+    rows, columns = 5, 100
     X = numpy.random.normal(loc=0, scale=1./columns, size=(rows, columns))
     X[:, 0] = 0.
     B = numpy.cumsum(X, axis=0)
