@@ -3,8 +3,8 @@ from matplotlib import pyplot
 
 
 if __name__ == '__main__':
-    n_iter = 100
-    n_sim = 10
+    n_iter = 200
+    n_sim = 20
 
     m_val = [1./2, 3./2]
     m_dist = [.5, .5]
@@ -18,11 +18,11 @@ if __name__ == '__main__':
             m.append(prev)
 
     fig, ax = pyplot.subplots()
-
+    fig.set_size_inches(8, 4)
     for m in martingale:
         ax.plot(m)
 
-    ax.set(xlabel='n', ylabel='$M_n$', title='Martingal')
+    ax.set(xlabel='n', ylabel='$M_n$')
     ax.grid()
 
     fig.savefig("martingale.pdf")
