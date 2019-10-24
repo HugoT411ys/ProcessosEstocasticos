@@ -5,7 +5,7 @@ from matplotlib import pyplot
 
 
 if __name__ == '__main__':
-    num_sim = 5
+    num_sim = 10
     sigma_exp = 0.
     sigma_uni = 0.
 
@@ -20,7 +20,7 @@ if __name__ == '__main__':
         ax.step(t_exp, N_exp, where='post')
         p.reset(init_state=0)
 
-    ax.set(xlabel='t', ylabel='$N_t$', title='Processo de Poisson: Disbruição Exponencial')
+    ax.set(xlabel='t', ylabel='$N_t$')
     ax.grid()
 
     fig.savefig("poisson_exp.pdf")
@@ -35,7 +35,7 @@ if __name__ == '__main__':
         ax.step(t_uni, N_uni, where='post')
         p.reset(init_state=0)
 
-    ax.set(xlabel='t', ylabel='$N_t$', title='Processo de Poisson: Distribuição Uniforme')
+    ax.set(xlabel='t', ylabel='$N_t$')
     ax.grid()
 
     fig.savefig("poisson_uni.pdf")
