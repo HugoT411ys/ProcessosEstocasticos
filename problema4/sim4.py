@@ -5,7 +5,7 @@ from matplotlib import pyplot
 
 
 if __name__ == '__main__':
-    num_sim = 50
+    num_sim = 500
     sigma_exp = 0.
     sigma_uni = 0.
 
@@ -20,7 +20,11 @@ if __name__ == '__main__':
         ax.step(t_exp, N_exp, where='post')
         p.reset(init_state=0)
 
-    ax.set(xlabel='t', ylabel='$N_t$')
+    ax.tick_params(axis="x", labelsize=10)
+    ax.tick_params(axis="y", labelsize=10)
+    pyplot.xlabel('$t$', fontsize=14)
+    pyplot.ylabel('$N_t$', fontsize=14)
+
     ax.grid()
 
     fig.savefig("poisson_exp.pdf")
@@ -35,7 +39,11 @@ if __name__ == '__main__':
         ax.step(t_uni, N_uni, where='post')
         p.reset(init_state=0)
 
-    ax.set(xlabel='t', ylabel='$N_t$')
+    ax.tick_params(axis="x", labelsize=10)
+    ax.tick_params(axis="y", labelsize=10)
+    pyplot.xlabel('$t$', fontsize=14)
+    pyplot.ylabel('$N_t$', fontsize=14)
+
     ax.grid()
 
     fig.savefig("poisson_uni.pdf")

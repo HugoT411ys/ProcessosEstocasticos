@@ -13,7 +13,14 @@ class MarkovChain:
 
     def distribution(self):
         if self.num_iter is not None:
-            return [(s, float(self.freq[s] / self.num_iter)) for s in self.freq]
+            s = ''
+            values = [float(self.freq[s] / self.num_iter) for s in self.freq]
+            for i, f in enumerate(values):
+                if i != (len(values)-1):
+                    s = s + str(f) + ' & '
+                else:
+                    s = s + str(f) + r' \\'
+            return s
         return 'You must first simulate the chain. Use <markov>.run()'
 
     def run(self, init_state, num_iter):
