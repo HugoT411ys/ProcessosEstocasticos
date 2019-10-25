@@ -13,13 +13,12 @@ def density_func(m):
 
 
 if __name__ == '__main__':
-    r, c = 5, 1000
+    n, m = 5, 1000
 
     # Simulating and plotting small sample. Just for visualization.
-    brown = brownian_motion(rows=r, columns=c)
+    brown = brownian_motion(rows=n, columns=m)
 
     fig1, ax1 = pyplot.subplots()
-    fig1.set_size_inches(8, 4)
 
     for b in brown:
         ax1.plot(b)
@@ -29,13 +28,12 @@ if __name__ == '__main__':
     fig1.savefig('brownian.pdf')
 
     # Simulating and plotting histogram of a bigger sample.
-    r = 500
-    brown = brownian_motion(rows=r, columns=c)
+    n = 500
+    brown = brownian_motion(rows=n, columns=m)
 
     max_brown = numpy.max(brown, axis=1)
 
     fig2, ax2 = pyplot.subplots()
-    fig2.set_size_inches(8, 4)
     ax2.hist(max_brown, alpha=0.3, bins=10, color='b')
 
     ax2.set(xlabel='$M_1$', ylabel='$freq$')
@@ -44,8 +42,7 @@ if __name__ == '__main__':
 
     # Plotting the exact probability density function
     fig3, ax3 = pyplot.subplots()
-    fig3.set_size_inches(8, 4)
-    x_values = numpy.linspace(numpy.min(max_brown), numpy.max(max_brown), c)
+    x_values = numpy.linspace(numpy.min(max_brown), numpy.max(max_brown), m)
     ax3.plot(x_values, [density_func(x) for x in x_values],'r')
 
     ax3.set(xlabel='m', ylabel='$f_{M_1}$')
