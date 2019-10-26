@@ -27,7 +27,7 @@ def gpr(x, y, xs, var):
 
 
 if __name__ == '__main__':
-    n = 50
+    n = 1000
     sigma_n2 = 0.16
     x_test = numpy.linspace(-numpy.pi, numpy.pi, n)
     y_test = numpy.sin(x_test) + numpy.random.normal(loc=0., scale=sigma_n2, size=x_test.shape)
