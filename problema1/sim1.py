@@ -4,6 +4,7 @@ from stochastic import MarkovChain
 
 N = 1000000
 
+#kkkkkkkkk
 
 def output_results(s, m):
     print('----------------------------------------------------------------------------------------------------')
