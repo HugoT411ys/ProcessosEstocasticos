@@ -26,32 +26,35 @@ def gpr(x, y, xs, var):
     return m, c
 
 
-if __name__ == '__main__':
-    n = 1000
-    sigma_n2 = 0.16
-    x_test = numpy.linspace(-numpy.pi, numpy.pi, n)
-    y_test = numpy.sin(x_test) + numpy.random.normal(loc=0., scale=sigma_n2, size=x_test.shape)
+def main():
+    n, ns = 8, 1000
+    I = (-4., 4)
 
-    x_train = numpy.linspace(-numpy.pi, numpy.pi, n)
+    sig = 0.001
+    x = numpy.linspace(I[0], I[1], n)
+    y = numpy.sin(x) + numpy.random.normal(loc=0., scale=sig, size=x.shape)
 
-    mean, cov = gpr(x_test, y_test, x_train, sigma_n2)
+    xs = numpy.linspace(I[0], I[1], ns)
+
+    mean, cov = gpr(x, y, xs, sig**2)
 
     # Plot data
     std = numpy.array([numpy.sqrt(x) for x in cov.diagonal()])
 
     fig, ax = pyplot.subplots()
-    pyplot.gca().fill_between(x_train, mean - 2*std, mean + 2*std,
-                              color='blue', alpha=0.25)
-    ax.scatter(x_test, y_test, s=5, color='red', label='$sin(x) + \\epsilon$')
-    ax.plot(numpy.linspace(-numpy.pi, numpy.pi, n), numpy.sin(x_test),label='sin(x)')
-    ax.plot(x_train, mean, 'g--', label='$\\mu$')
+    pyplot.gca().fill_between(xs, mean - 2 * std, mean + 2 * std, color='blue', alpha=0.25)
+
+    ax.scatter(x, y, s=15, color='red', label='$sin(x) + \\epsilon$')
+    ax.plot(xs, mean, 'g--', label='$\\mu$')
+    ax.plot(xs, numpy.sin(xs), 'blue')
     ax.set(xlabel='x')
     ax.legend(loc='best')
-    pyplot.title('Gaussian Process Regression - Confidence Interval $[\\mu - 2\\sigma, \\mu + 2\\sigma]$')
+    pyplot.title('Gaussian Process Regression')
     ax.grid()
     fig.savefig("gp_regression.pdf")
 
-    manager = pyplot.get_current_fig_manager()
-    manager.window.showMaximized()
-
     pyplot.show()
+
+
+if __name__ == '__main__':
+    main()
