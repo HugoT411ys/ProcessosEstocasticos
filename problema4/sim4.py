@@ -5,7 +5,7 @@ from matplotlib import pyplot
 
 
 if __name__ == '__main__':
-    num_sim = 500
+    num_sim = 5
     sigma_exp = 0.
     sigma_uni = 0.
 

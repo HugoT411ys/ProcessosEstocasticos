@@ -46,10 +46,8 @@ def main():
 
     ax.scatter(x, y, s=15, color='red', label='$sin(x) + \\epsilon$')
     ax.plot(xs, mean, 'g--', label='$\\mu$')
-    ax.plot(xs, numpy.sin(xs), 'blue')
     ax.set(xlabel='x')
     ax.legend(loc='best')
-    pyplot.title('Gaussian Process Regression')
     ax.grid()
     fig.savefig("gp_regression.pdf")
 
