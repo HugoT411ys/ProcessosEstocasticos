@@ -56,10 +56,10 @@ int main (int argc, char *argv[])
 
     std::cout << "n,sigma" << std::endl;
 
-    for (int n = 1; n < num_sim; ++n)
+    for (int n = 1; n <= num_sim; ++n)
     {
-        sigma += simulate_exponential(n_t, total_time, exp_dist_lambda);
-        // sigma += simulate_uniform(n_t, total_time, exp_dist_lambda);
+        // sigma += simulate_exponential(n_t, total_time, exp_dist_lambda);
+        sigma += simulate_uniform(n_t, total_time, exp_dist_lambda);
         std::cout << n << "," << sigma/n << std::endl;
         
         n_t.clear();
