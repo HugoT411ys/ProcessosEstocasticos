@@ -27,10 +27,11 @@ def gpr(x, y, xs, var):
 
 
 def main():
-    n, ns = 8, 1000
-    I = (-4., 4)
+    n, ns = 5, 50
+    I = (-numpy.pi, numpy.pi)
 
-    sig = 0.001
+    sig = 0.4  # sig**2 = 0.16
+    sig = 0.
     x = numpy.linspace(I[0], I[1], n)
     y = numpy.sin(x) + numpy.random.normal(loc=0., scale=sig, size=x.shape)
 
@@ -46,10 +47,11 @@ def main():
 
     ax.scatter(x, y, s=15, color='red', label='$sin(x) + \\epsilon$')
     ax.plot(xs, mean, 'g--', label='$\\mu$')
+    ax.plot(xs, numpy.sin(xs), 'y', label="$sin(x)$")
     ax.set(xlabel='x')
     ax.legend(loc='best')
     ax.grid()
-    fig.savefig("gp_regression.pdf")
+    fig.savefig("gp_regression0.pdf")
 
     pyplot.show()
 

@@ -28,13 +28,13 @@ if __name__ == '__main__':
     fig1.savefig('brownian.pdf')
 
     # Simulating and plotting histogram of a bigger sample.
-    n = 500
+    n = 10000
     brown = brownian_motion(rows=n, columns=m)
 
     max_brown = numpy.max(brown, axis=1)
 
     fig2, ax2 = pyplot.subplots()
-    ax2.hist(max_brown, alpha=0.3, bins=10, color='b')
+    ax2.hist(max_brown, alpha=0.3, bins=8, color='b')
 
     ax2.set(xlabel='$M_1$', ylabel='$freq$')
 
