@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     total_time = 1.
 
-    w_t = numpy.random.normal(loc=0., scale=total_time/m, size=(n, m))
+    w_t = numpy.random.normal(loc=0., scale=(total_time/m)**0.5, size=(n, m))
     w_t[:,0] = 0.
     w_t = numpy.cumsum(w_t, axis=1)
 

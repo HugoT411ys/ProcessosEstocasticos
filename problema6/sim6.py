@@ -3,7 +3,7 @@ from matplotlib import pyplot
 
 
 def brownian_motion(rows, columns):
-    x = numpy.random.normal(loc=0., scale=1./columns, size=(rows, columns))
+    x = numpy.random.normal(loc=0., scale=(1./columns)**0.5, size=(rows, columns))
     x[:, 0] = 0.
     return numpy.cumsum(x, axis=1)
 
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     fig1.savefig('brownian.pdf')
 
     # Simulating and plotting histogram of a bigger sample.
-    n = 10000
+    n = 100000
     brown = brownian_motion(rows=n, columns=m)
 
     max_brown = numpy.max(brown, axis=1)
