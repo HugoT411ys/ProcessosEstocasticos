@@ -1,0 +1,5 @@
+Simulando Cadeia de Markov em tempo discreto.
+Numero de iteracoes: 1000000
+Distribuicao Limite: 
+TT = [ 0.199163 0.267092 0.133584 0.40016 ]
+Aproximacao para o limite ~ 8.87233

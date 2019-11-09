@@ -1,33 +1,18 @@
-import sys
-import time
-from stochastic import MarkovChain
-
-N = 1000000
-
+import pandas
+import numpy
+from matplotlib import pyplot
 
 if __name__ == '__main__':
-    start_time = time.time()
+    data = pandas.read_csv('plot.csv', encoding='utf-8')
 
-    P = {'1': {'1': 1./3, '2': 0., '3': 2./3, '4': 0.},
-         '2': {'1': 1./4, '2': 1./2, '3': 1./4, '4': 0.},
-         '3': {'1': 1./2, '2': 0., '3': 1./2, '4': 0.},
-         '4': {'1': 0., '2': 1./3, '3': 0., '4': 2./3}}
+    n = data['n'].tolist()
+    sigma = data['sigma'].tolist()
 
-    markov = MarkovChain(trans_prob=P)
+    pyplot.plot(n, sigma, 'r', label='valor simulado')
+    x = numpy.linspace(0, 1000000)
+    pyplot.plot(x, [133/15 for _ in x], '--b', label='valor exato')
 
-    f = open('sim2_out.txt', 'w')
-    sys.stdout = f
+    pyplot.legend()
 
-    print('====================================================================================================')
-    print('Simulando Cadeia de Markov em tempo discreto')
-    print('Espaço de estados: ')
-    print(markov.states)
-    print('Número de iterações: ' + str(N))
-    print('====================================================================================================')
+    pyplot.show()
 
-    sigma = markov.run(init_state='1', num_iter=N)
-    print('Aproximação para o limite: ' + str(sigma))
-
-    print('====================================================================================================')
-    print("Tempo de execução: %s segundos" % (time.time() - start_time))
-    print('====================================================================================================')

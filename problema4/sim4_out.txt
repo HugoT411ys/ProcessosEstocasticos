@@ -1,7 +1,0 @@
-====================================================================================================
-Simulando Processo de Poisson
-Quantidade de caminhos (J): 5
-Valor aproximado para esperança da integral: 
-Simulação exponencial: E ~ 12.569709577568297
-Simulação uniforme: E ~ 13.188691377781572
-====================================================================================================

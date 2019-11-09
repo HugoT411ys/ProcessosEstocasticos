@@ -13,7 +13,7 @@ def black_scholes(s_zero, r, s, dt, bt):
 
 
 if __name__ == '__main__':
-    n, m = 100, 1000
+    n, m = 500, 1000
 
     total_time = 1.
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     fig2, ax2 = pyplot.subplots()
 
-    k = numpy.linspace(start=80, stop=120, num=5)
+    k = numpy.linspace(start=80, stop=120, num=50)
 
     c = [expected_value(scholes=s_t, k=i, r=0.05, t=total_time) for i in k]
 

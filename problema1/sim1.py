@@ -1,44 +1,41 @@
-import sys
-import time
-from stochastic import MarkovChain
+import numpy
 
-N = 1000000
+from matplotlib import pyplot
 
 
-def output_results(s, m):
-    print('----------------------------------------------------------------------------------------------------')
-    print('Estado inicial: ' + s)
-    print('Distribuição Limite: ')
-    print(m.distribution())
-    print('----------------------------------------------------------------------------------------------------')
+def main():
+    num_states = 5
+    num_paths, num_iter = 10, 100
+    states = [i for i in range(num_states)]
+
+    tran_prob = numpy.array([
+        [1./3, 0., 2./3, 0., 0.],
+        [1./4, 1./2, 1./4, 0., 0.],
+        [1./2, 0., 1./2, 0., 0.],
+        [0., 0., 0., 0., 1.],
+        [0., 0., 0., 2./3, 1./3]
+    ])
+
+    x_n = numpy.zeros(shape=(num_paths, num_iter))
+
+    for j in range(num_paths):
+        cur_state = numpy.random.choice(states)
+        for i in range(num_iter):
+            x_n[j][i] = cur_state
+            cur_state = numpy.random.choice(states, p=tran_prob[cur_state])
+
+    fig, ax = pyplot.subplots()
+
+    for path in x_n:
+        ax.plot(numpy.arange(0., num_iter, 1), path)
+
+    ax.set(xlabel='$n$', ylabel='$X_{n}$')
+
+    ax.grid()
+    fig.savefig("markov_paths.pdf")
+
+    pyplot.show()
 
 
 if __name__ == '__main__':
-    start_time = time.time()
-
-    P = {'1': {'1': 1./3, '2': 0., '3': 2./3, '4': 0., '5': 0.},
-         '2': {'1': 1./4, '2': 1./2, '3': 1./4, '4': 0., '5': 0.},
-         '3': {'1': 1./2, '2': 0., '3': 1./2, '4': 0., '5': 0.},
-         '4': {'1': 0., '2': 0., '3': 0., '4': 0., '5': 1.},
-         '5': {'1': 0., '2': 0., '3': 0., '4': 2./3, '5': 1./3}}
-
-    markov = MarkovChain(trans_prob=P)
-
-    f = open('sim1_out.txt', 'w')
-    sys.stdout = f
-
-    print('====================================================================================================')
-    print('Simulando Cadeia de Markov em tempo discreto')
-    print('Espaço de estados: ')
-    print(markov.states)
-    print('Número de iterações: ' + str(N))
-    print('====================================================================================================')
-
-    for state in markov.states:
-        markov.run(init_state=state, num_iter=N)
-        output_results(state, markov)
-        markov.reset()
-
-    print('====================================================================================================')
-    print("Tempo de execução: %s segundos." % (time.time() - start_time))
-    print('====================================================================================================')
+    main()

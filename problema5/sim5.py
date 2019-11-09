@@ -27,7 +27,7 @@ def gpr(x, y, xs, var):
 
 
 def main():
-    n, ns = 5, 50
+    n, ns = 5, 500
     I = (-numpy.pi, numpy.pi)
 
     sig = 0.4  # sig**2 = 0.16
