@@ -5,14 +5,14 @@ typedef std::discrete_distribution<int> discrete;
 
 std::default_random_engine generator;
 
-void simulate(int *d, discrete *p, int cs, int n)
+void simulate(int *d, discrete *p, int curr_state, int n)
 {
-    int i, ns;
+    int i, next_state;
     for (i = 0; i < n; ++i)
     {
-        ns = p[cs](generator);
-        d[ns]++;
-        cs = ns;
+        next_state = p[curr_state](generator);
+        d[next_state]++;
+        curr_state = next_state;
     }
 }
 

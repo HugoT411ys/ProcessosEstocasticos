@@ -48,7 +48,7 @@ int main (int argc, char *argv[])
     double const exp_dist_lambda = 1.;
     double const total_time = 5.;
 
-    int const num_sim = 10000; 
+    int const num_sim = 10000;
 
     std::vector<double> n_t;
 
